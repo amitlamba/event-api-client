@@ -1,0 +1,16 @@
+{
+  "name": "event-api-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "userndot.com",
+  "license": "Licenced by userndot.com",
+  "devDependencies": {
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0"
+  }
+}
