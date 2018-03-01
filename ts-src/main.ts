@@ -2,6 +2,8 @@ import {EventUser, Identity, Und} from "./modal";
 import HttpClient from "./HttpClient";
 import {baseuri, eventuri, initializeuri, profileuri} from "./Constants";
 
+declare var _und: any;
+
 _und = _und || {event: [], profile: [], account: [], onUserLogin: [], notifications: []};
 // document.getElementById("index")!.innerHTML = "Changed by TypeScript!";
 
@@ -49,4 +51,3 @@ function repeat() {
     }
 }
 
-// console.log(user);

@@ -1,6 +1,5 @@
 export default class HttpClient {
 
-    private authorization1: string = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWl0QHVzZXJuZG90LmNvbSIsImF1ZGllbmNlIjoid2ViIiwidXNlcklkIjoiOSIsImNsaWVudElkIjoiNSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiY3JlYXRlZCI6MTUxOTg4NTAzNTg5OCwiZXhwIjoxNTIwNDg5ODM1fQ.Jcif3QLmv9b_tfxAGQbIXE-Da2J9_drmBuQnMdlsffCWEaqw2nNuCGQEp22WxpMQwLr9RBarKAghEFDFJ8YzKg';
     contentType: string = 'application/json';
 
     constructor(private authorization: string) {
@@ -26,7 +25,4 @@ export default class HttpClient {
             .then(response => response.json()) // parses response to JSON
     }
 
-    show() {
-        alert("Hello World 3!");
-    }
 }
