@@ -1,44 +1,52 @@
-import {User} from "./modal";
+import {EventUser, Identity, Und} from "./modal";
 import HttpClient from "./HttpClient";
+import {baseuri, eventuri, initializeuri, profileuri} from "./Constants";
 
-interface Person {
-    age: number,
-    name: string,
-    say(): string
-}
-
-let mike = {
-    age: 25,
-    name: "Mike",
-    say: function () {
-        return "My name is " + this.name +
-            " and I'm " + this.age + " years old!"
-    }
-}
-
-function sayIt(person: Person) {
-    return person.say();
-}
-
-console.log(sayIt(mike));
-
+_und = _und || {event: [], profile: [], account: [], onUserLogin: [], notifications: []};
 // document.getElementById("index")!.innerHTML = "Changed by TypeScript!";
 
-var data = { "identity": { "deviceId": "5c723e5e-becf-4de7-8943-7c15a1b0f45a", "sessionId": "e9298a5d-dca6-49c1-b333-f4eb6e7a2909", "userId": "5a770a572ff9764dc8ff6a0d" }, "gender": "M", "country": "India" };
+var httpClient = new HttpClient(_und.account[0].id);
+var identity: Identity = {} as Identity;
+var user: EventUser = {} as EventUser;
 
-var httpClient = new HttpClient();
-
-httpClient.postData("http://nestros.com:8080/event/push/profile", data).then(
-    (ressponse) => {
-        console.log(ressponse);
-    }
-);
-
-var user: User = new User();
-user = { name: "Amit Lamba", email: "amit@userndot.com" };
-console.log(user);
-
-window.onload = () => {
-    var o = new HttpClient();
-    o.show();
+//Init with identity
+if (localStorage && localStorage.getItem("id")) {
+    identity = JSON.parse(<string> localStorage.getItem("id"));
+} else {
+    httpClient.postData(baseuri + initializeuri).then(
+        (response) => {
+            console.log(response);
+            identity = response.data.value;
+            localStorage.setItem("id", JSON.stringify(identity));
+        }
+    );
 }
+
+setInterval(repeat(), 5000);
+
+function repeat() {
+    if (identity) {
+        while (_und.profile.length > 0) {
+            var profile = _und.profile.shift();
+            profile.identity = identity;
+            httpClient.postData(baseuri + profileuri, profile).then(
+                (response) => {
+                    console.log(response);
+                    identity = response.data.value;
+                    localStorage.setItem("id", JSON.stringify(identity));
+                }
+            );
+        }
+        while (_und.event.length > 0) {
+            var event = _und.event.shift();
+            event.identity = identity;
+            httpClient.postData(baseuri + eventuri, event).then(
+                (response) => {
+                    console.log(response);
+                }
+            );
+        }
+    }
+}
+
+// console.log(user);

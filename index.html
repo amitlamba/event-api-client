@@ -1,10 +1,42 @@
-
 <!DOCTYPE html>
-<html>    
-    <body>
-        <h1>Fun with TypeScript</h1>
-        <p id="index">Let's rock</p>
-      
-        <script src="build/main.js"> </script>
-    </body>
+<html>
+<head>
+</head>
+<body>
+<h1>Fun with TypeScript</h1>
+<p id="index">Let's rock</p>
+<script type="text/javascript">
+    var _und = _und || {event: [], profile: [], account: [], onUserLogin: [], notifications: []};
+    // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+    _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWl0QHVzZXJuZG90LmNvbSIsImF1ZGllbmNlIjoid2ViIiwidXNlcklkIjoiOSIsImNsaWVudElkIjoiNSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiY3JlYXRlZCI6MTUxOTg4NTAzNTg5OCwiZXhwIjoxNTIwNDg5ODM1fQ.Jcif3QLmv9b_tfxAGQbIXE-Da2J9_drmBuQnMdlsffCWEaqw2nNuCGQEp22WxpMQwLr9RBarKAghEFDFJ8YzKg"});
+    (function () {
+        var dsft = document.createElement('script');
+        dsft.type = 'text/javascript';
+        dsft.async = true;
+//                dsft.src =  ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        dsft.src = 'build/main.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(dsft, s);
+    })();
+</script>
+
+<script type="text/javascript">
+    _und.profile.push({
+        "firstName": "Bhutani",
+        "lastName": "Handloom"
+    });
+    _und.event.push({
+        "name": "Lenovo Legion",
+        "attributes": {},
+        "lineItem": [{
+            "price": 200,
+            "currency": "USD",
+            "product": "CORE JAVA Volume 1",
+            "categories": ["Book", "Programming"],
+            "quantity": 2
+        }],
+        "state": "haryana"
+    });
+</script>
+</body>
 </html>

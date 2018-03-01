@@ -1,9 +1,13 @@
 export default class HttpClient {
 
-    authorization: string = '';
+    private authorization1: string = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbWl0QHVzZXJuZG90LmNvbSIsImF1ZGllbmNlIjoid2ViIiwidXNlcklkIjoiOSIsImNsaWVudElkIjoiNSIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiY3JlYXRlZCI6MTUxOTg4NTAzNTg5OCwiZXhwIjoxNTIwNDg5ODM1fQ.Jcif3QLmv9b_tfxAGQbIXE-Da2J9_drmBuQnMdlsffCWEaqw2nNuCGQEp22WxpMQwLr9RBarKAghEFDFJ8YzKg';
     contentType: string = 'application/json';
 
-    postData(url: string, data: any) {
+    constructor(private authorization: string) {
+
+    }
+
+    postData(url: string, data?: any) {
         // Default options are marked with *
         return fetch(url, {
             body: JSON.stringify(data), // must match 'Content-Type' header
@@ -12,7 +16,7 @@ export default class HttpClient {
             headers: {
                 'user-agent': 'Mozilla/4.0 MDN Example',
                 'content-type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZGllbmNlIjoid2ViIiwidXNlcklkIjoiMiIsImNsaWVudElkIjoiMiIsInJvbGVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfQURNSU4iXSwiY3JlYXRlZCI6MTUxOTI3NjUwNDExMiwiZXhwIjoxNTE5ODgxMzA0fQ.UR2YKJhHg6JTH-_j2_lW0qqZ0rdGo6KhNPgB6GmJjUIgp7FXRNArAuIYaDYxbAd_wPYhjrlzlJAT7ehywZxohA'
+                'Authorization': this.authorization
             },
             method: 'POST', // *GET, PUT, DELETE, etc.
             mode: 'cors', // cors, no-cors, *same-origin
