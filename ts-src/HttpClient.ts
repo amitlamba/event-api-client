@@ -13,7 +13,6 @@ export default class HttpClient {
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             //   credentials: 'include', // include, *omit, same-origin
             headers: {
-                'user-agent': 'Mozilla/4.0 MDN Example',
                 'content-type': 'application/json',
                 'Authorization': this.authorization
             },
