@@ -12,7 +12,7 @@ var identity: Identity = {} as Identity;
 var user: EventUser = {} as EventUser;
 
 //Init with identity
-if (localStorage && localStorage.getItem("id")) {
+if (localStorage && localStorage.getItem("id") != null && JSON.parse(<string>localStorage.getItem("id")) != null) {
     identity = JSON.parse(<string> localStorage.getItem("id"));
 } else {
     httpClient.postData(baseuri + initializeuri).then(
