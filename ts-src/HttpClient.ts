@@ -7,6 +7,12 @@ export default class HttpClient {
     }
 
     postData(url: string, data?: any) {
+        console.log("Scanning through data while sending postData")
+        if(data) {
+            Object.keys(data).forEach(function (key) {
+                console.log(key, data[key]);
+            });
+        }
         // Default options are marked with *
         return fetch(url, {
             body: JSON.stringify(data), // must match 'Content-Type' header
