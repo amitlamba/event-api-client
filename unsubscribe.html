@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        var _und;
+        (function () {
+            var dsft = document.createElement('script');
+            dsft.type = 'text/javascript';
+            dsft.async = true;
+//                dsft.src =  ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+            dsft.src = 'build/main.min.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(dsft, s);
+        })();
+        // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+        _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9zaGl2MTdAdW5kLmNvbSIsInVzZXJJZCI6IjMwIiwiY2xpZW50SWQiOiIxNSIsInJvbGVzIjpbIlJPTEVfRVZFTlQiXSwiY3JlYXRlZCI6MTUyNjQ2MzQ1NTgyMCwiZXhwIjo5MjIzMzcyMDM2ODU0Nzc1fQ.L1-gtCrqHgZwDrZVe61M901eJHpmYDseopSM7w14mtq4mW0CfXStvHsmzkYATjELvCqU7Uc3ETVS5rjQmw7UvA"});
+
+        if ("geolocation" in navigator) {
+            /* geolocation is available */
+            console.log("Geolocation is available");
+//        navigator.geolocation.getCurrentPosition(function (position) {
+//            console.log(position.coords);
+//        });
+            watch_id = navigator.geolocation.watchPosition(function (position) {
+                console.log(position.coords);
+            });
+        } else {
+            /* geolocation IS NOT available */
+            console.log("Geolocation is not available");
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title>Unsubscribe</title>
+</head>
+<body>
+<h1 style="text-align: center">Welcome, you are getting unsubscribed...</h1>
+<div>
+</div>
+</body>
+</html>
