@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <script type="text/javascript">
-        var _und;
+        var _und = _und || {event: [], profile: [], account: [], onUserLogin: [], notifications: []};
+        // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+        _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9zaGl2MTdAdW5kLmNvbSIsInVzZXJJZCI6IjMwIiwiY2xpZW50SWQiOiIxNSIsInJvbGVzIjpbIlJPTEVfRVZFTlQiXSwiY3JlYXRlZCI6MTUyNjQ2MzQ1NTgyMCwiZXhwIjo5MjIzMzcyMDM2ODU0Nzc1fQ.L1-gtCrqHgZwDrZVe61M901eJHpmYDseopSM7w14mtq4mW0CfXStvHsmzkYATjELvCqU7Uc3ETVS5rjQmw7UvA"});
         (function () {
             var dsft = document.createElement('script');
             dsft.type = 'text/javascript';
@@ -12,8 +14,6 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(dsft, s);
         })();
-        // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-        _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9zaGl2MTdAdW5kLmNvbSIsInVzZXJJZCI6IjMwIiwiY2xpZW50SWQiOiIxNSIsInJvbGVzIjpbIlJPTEVfRVZFTlQiXSwiY3JlYXRlZCI6MTUyNjQ2MzQ1NTgyMCwiZXhwIjo5MjIzMzcyMDM2ODU0Nzc1fQ.L1-gtCrqHgZwDrZVe61M901eJHpmYDseopSM7w14mtq4mW0CfXStvHsmzkYATjELvCqU7Uc3ETVS5rjQmw7UvA"});
 
         if ("geolocation" in navigator) {
             /* geolocation is available */
@@ -28,13 +28,76 @@
             /* geolocation IS NOT available */
             console.log("Geolocation is not available");
         }
+
+        function checkMyValue() {
+            var unsubscribeDropdown = document.querySelector('#unsubscribeDropdown');
+            console.log(unsubscribeDropdown.value);
+            if (unsubscribeDropdown.value === 'Others, Please specify') {
+                document.querySelector('#unsubscribeReasonTextarea').style.display = "block";
+            }
+            else {
+                document.querySelector('#unsubscribeReasonTextarea').style.display = "none";
+            }
+        }
+
+        function showUnsubscribeSuccessMessage() {
+
+            var unsubscribeConfirm = document.querySelector("#unsubscribeConfirm");
+            var unsubscribeSuccess = document.querySelector('#unsubscribeSuccess');
+            unsubscribeConfirm.style.display = 'none';
+            unsubscribeSuccess.style.display = 'block';
+        }
     </script>
     <meta charset="UTF-8">
     <title>Unsubscribe</title>
 </head>
-<body>
-<h1 style="text-align: center">Welcome, you are getting unsubscribed...</h1>
-<div>
+<body style="background:#EFEAEA;">
+<div style="max-width: 700px;
+            background: #fff;
+            margin: 50px auto 0;
+            padding: 30px 70px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px 2px #a5b3c0;">
+    <div style="display: block;" id="unsubscribeConfirm">
+        <h1 style="text-align: center;margin-bottom: 0;">userabc@gmail.com</h1>
+        <p style="margin-top: 2px;text-align: center;font-size: 16px;padding-bottom: 30px;border-bottom: 1px solid #c8d0d0">
+            is subscribed to our mailing list(s).
+        </p>
+        <h1 style="color: red;text-align: center;margin-top: 35px;">Unsubscribe from our mailing list</h1>
+        <p style="padding: 10px 15px;">We're sorry to see you go, but hey, no hard feelings, hopefully we will see you
+            back one day.
+            To help us improve our services, we would be grateful if you could tell us why:</p>
+        <div style="text-align: center;">
+            <select onchange="checkMyValue()" name="unsubscribeOptions" id="unsubscribeDropdown"
+                    style="padding: 8px 15px;border-radius: 4px;outline: 0;cursor: pointer;">
+                <option value="" disabled selected>Please select the reason</option>
+                <option value="">The emails are spam and should be reported</option>
+                <option value="">I no longer want to receive these emails</option>
+                <option value="">I don't remember signing up for this</option>
+                <option value="">Your emails are not relevant to me</option>
+                <option value="">The email is too cluttered or looks unprofessional</option>
+                <option value="Others, Please specify">Others, Please specify</option>
+                <textarea style="margin: 20px auto;border-radius: 4px;display: none;padding: 12px;"
+                          placeholder="Provide your reason here..."
+                          name="unsubscribeReasonTextarea"
+                          id="unsubscribeReasonTextarea"
+                          rows="5" cols="43"></textarea>
+            </select>
+            <div style="margin-top: 25px;">
+                <button onclick="showUnsubscribeSuccessMessage()"
+                        style="padding: 12px 50px;cursor: pointer;border-radius: 5px;background-color:#005C99;border: none;
+                    color: white;text-align: center;font-size: 18px;">
+                    Unsubscribe
+                </button>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" id="unsubscribeSuccess">
+        <h1 style="text-align: center;margin-bottom: 0;color: red;">Congratz!</h1>
+        <p style="margin: 17px 0;padding: 10px 15px;font-size: 20px;">Your email ID is successfully removed from the Subscription list.
+            Hopefully you will come back one day.</p>
+    </div>
+
 </div>
 </body>
 </html>
