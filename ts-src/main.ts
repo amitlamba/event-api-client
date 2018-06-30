@@ -6,7 +6,7 @@ import {baseuri, eventuri, initializeuri, profileuri} from "./Constants";
 
 declare var _und: any;
 
-_und = _und || {event: [], profile: [], account: [], onUserLogin: [], notifications: []};
+_und = _und || {event: [], profile: [], account: [], login: [], notifications: []};
 // document.getElementById("index")!.innerHTML = "Changed by TypeScript!";
 
 var httpClient = new HttpClient(_und.account[0].id);
@@ -62,6 +62,14 @@ if (localStorage && localStorage.getItem("id") != null && JSON.parse(<string>loc
 function repeat() {
     console.log("repeat() method called.");
     try {
+        _und.login.forEach(
+            function (value: any, key: any, array: any[]) {
+                if(value.login == true) {
+                    _und.login.splice(key, 1);
+                    removeIdentity();
+                }
+            }
+        );
         if (identity) {
             while (_und.profile.length > 0) {
                 var profile = _und.profile.shift();
@@ -104,6 +112,14 @@ function repeat() {
                     removeUtmParams();
                 }
             }
+            _und.login.forEach(
+                function (value: any, key: any, array: any[]) {
+                    if(value.logout == true) {
+                        _und.login.splice(key, 1);
+                        removeIdentity();
+                    }
+                }
+            );
         } else {
             getIdentity();
         }
