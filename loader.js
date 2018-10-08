@@ -1,0 +1,1 @@
+(function(i,s,o,g,v,a,m){a= s["createElement"](o),m= s["getElementsByTagName"](o)[0];a["async"]= 1;a["src"]= g+ "?v="+ v;m["parentNode"]["insertBefore"](a,m)})(window,document,"script","//userndot.com/sdk/js/main.min.js","1.0.0")
