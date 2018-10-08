@@ -2,31 +2,84 @@
 <html>
 <head>
     <script type="text/javascript">
-        var _und = _und || {event: [], profile: [], account: [], login: [], notifications: []};
-        // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-        _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9sYWtzaGJodXRhbmlAZ21haWwuY29tIiwidXNlcklkIjoiNTAwMSIsImNsaWVudElkIjoiMjAwMSIsInJvbGVzIjpbIlJPTEVfRVZFTlQiXSwiY3JlYXRlZCI6MTUzMDI4MDUxODY0NSwiZXhwIjo5MjIzMzcyMDM2ODU0Nzc1fQ.YUOegSzZ-5aY8DOSRQrCsO3eOua8MS14he1oIlsOBx9UTd6tdjfIqnj0agdzMOLzgwJ4OVFD71wnFZqa9Wv0SQ"});
-        (function () {
-            var dsft = document.createElement('script');
-            dsft.type = 'text/javascript';
-            dsft.async = true;
-//                dsft.src =  ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-            dsft.src = 'build/main.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(dsft, s);
-        })();
-        if ("geolocation" in navigator) {
-            /* geolocation is available */
-            console.log("Geolocation is available");
-//        navigator.geolocation.getCurrentPosition(function (position) {
-//            console.log(position.coords);
-//        });
-            watch_id = navigator.geolocation.watchPosition(function (position) {
-                console.log(position.coords);
-            });
-        } else {
-            /* geolocation IS NOT available */
-            console.log("Geolocation is not available");
-        }
+        (function (i, s, o, g, r, a, m) {
+            i['UserNDotObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'loader.js', '_und');
+
+        _und('create', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9hbWl0QHVzZXJuZG90LmNvbSIsInVzZXJJZCI6IjEwMDEiLCJjbGllbnRJZCI6IjEwMDAiLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0VWRU5UIl0sImNyZWF0ZWQiOjE1MzEzMDUzNjU4NzQsImV4cCI6OTIyMzM3MjAzNjg1NDc3NX0.UO49c1HoKKEbEbv3bXVrvxZCO5NnJ4u1sWl19gyrc5YDrUWYY3t1mDwCmg8Uwoq9v338RrLSKWj4zXgLlj5S9A',{
+            urls: ['https://userndot.com'],
+            location: {active:true}
+        });
+        _und('location',{active:true});
+
+        var webengage;
+        ! function(w, e, b, n, g) {
+            function o(e, t) {
+                e[t[t.length - 1]] = function() {
+                    r.__queue.push([t.join("."), arguments])
+                }
+            }
+            var i, s, r = w[b],
+                z = " ",
+                l = "init options track screen onReady".split(z),
+                a = "feedback survey notification".split(z),
+                c = "options render clear abort".split(z),
+                p = "Open Close Submit Complete View Click".split(z),
+                u = "identify login logout setAttribute".split(z);
+            if (!r || !r.__v) {
+                for (w[b] = r = {
+                    __queue: [],
+                    __v: "6.0",
+                    user: {}
+                }, i = 0; i < l.length; i++) o(r, [l[i]]);
+                for (i = 0; i < a.length; i++) {
+                    for (r[a[i]] = {}, s = 0; s < c.length; s++) o(r[a[i]], [a[i], c[s]]);
+                    for (s = 0; s < p.length; s++) o(r[a[i]], [a[i], "on" + p[s]])
+                }
+                for (i = 0; i < u.length; i++) o(r.user, ["user", u[i]]);
+                setTimeout(function() {
+                    var f = e.createElement("script"),
+                        d = e.getElementById("_webengage_script_tag");
+                    f.type = "text/javascript", f.async = !0, f.src = ("https:" == e.location.protocol ? "https://ssl.widgets.webengage.com" : "http://cdn.widgets.webengage.com") + "/js/webengage-min-v-6.0.js", d.parentNode.insertBefore(f, d)
+                })
+            }
+        }(window, document, "webengage");
+
+        webengage.init('YOUR_WEBENGAGE_LICENSE_CODE');
+//        _und('send', 'pageview');
+//        var _und = _und || {event: [], profile: [], account: [], login: [], notifications: []};
+//        // replace with the UND_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+//        _und.account.push({"id": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJldmVudF9hbWl0QHVzZXJuZG90LmNvbSIsInVzZXJJZCI6IjEwMDEiLCJjbGllbnRJZCI6IjEwMDAiLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0VWRU5UIl0sImNyZWF0ZWQiOjE1MzEzMDUzNjU4NzQsImV4cCI6OTIyMzM3MjAzNjg1NDc3NX0.UO49c1HoKKEbEbv3bXVrvxZCO5NnJ4u1sWl19gyrc5YDrUWYY3t1mDwCmg8Uwoq9v338RrLSKWj4zXgLlj5S9A"});
+//        (function () {
+//            var dsft = document.createElement('script');
+//            dsft.type = 'text/javascript';
+//            dsft.async = true;
+////                dsft.src =  ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+//            dsft.src = 'build/main.js';
+//            var s = document.getElementsByTagName('script')[0];
+//            s.parentNode.insertBefore(dsft, s);
+//        })();
+//        if ("geolocation" in navigator) {
+//            /* geolocation is available */
+//            console.log("Geolocation is available");
+////        navigator.geolocation.getCurrentPosition(function (position) {
+////            console.log(position.coords);
+////        });
+//            watch_id = navigator.geolocation.watchPosition(function (position) {
+//                console.log(position.coords);
+//            });
+//        } else {
+//            /* geolocation IS NOT available */
+//            console.log("Geolocation is not available");
+//        }
     </script>
 </head>
 <body>
@@ -35,11 +88,11 @@
 
 
 <script type="text/javascript">
-    _und.profile.push({
-        "firstName": "Bhutani",
-        "lastName": "Handloom"
+    _und('profile',{
+        "firstName": "Amit",
+        "lastName": "Lamba"
     });
-    _und.event.push({
+    _und('event',{
         "name": "charged",
         "attributes": {
             "at": new Date("2018-05-02T13:21:40.059Z")
@@ -53,6 +106,23 @@
         }],
         "state": "haryana"
     });
+    _und('logout');
+    setTimeout(function() {
+        _und('event',{
+            "name": "charged",
+            "attributes": {
+                "at": new Date("2018-05-02T13:21:40.059Z")
+            },
+            "lineItem": [{
+                "price": 200,
+                "currency": "USD",
+                "product": "CORE JAVA Volume 1",
+                "categories": ["Book", "Programming"],
+                "quantity": 2
+            }],
+            "state": "haryana"
+        });
+    }, 10000);
 </script>
 </body>
 </html>
